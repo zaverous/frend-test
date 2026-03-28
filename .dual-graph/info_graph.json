@@ -1,0 +1,75 @@
+{
+  "root": "/home/zaverous/project/frend-test",
+  "node_count": 4,
+  "edge_count": 4,
+  "file_count": 4,
+  "symbol_count": 0,
+  "nodes": [
+    {
+      "id": "docker-compose.yml",
+      "kind": "file",
+      "path": "docker-compose.yml",
+      "ext": ".yml",
+      "size": 596,
+      "keywords": [],
+      "content": "# test-frontend/docker-compose.yml\n# Purpose: Minimal test to validate NPM \u2192 container routing works correctly.\n# This stack joins the shared `proxy` network so NPM can reach it by container name.\n# In NPM, set destination to: http://test-frontend-app-1:3000\n\nservices:\n  app:\n    build:\n      context: .\n      dockerfile: Dockerfile\n    container_name: test-frontend-app-1\n    restart: unless-stopped\n    networks:\n      - proxy\n    # NO host port binding \u2014 NPM reaches it via the proxy network\n\nnetworks:\n  proxy:\n    external: true  # Must already exist: run `docker network create proxy`\n",
+      "summary": "test-frontend/docker-compose.yml.",
+      "file_hash": "d12643aa"
+    },
+    {
+      "id": "Issue summary.md",
+      "kind": "file",
+      "path": "Issue summary.md",
+      "ext": ".md",
+      "size": 2204,
+      "keywords": [],
+      "content": "# Docker + NPM 502 Bad Gateway \u2014 Issue Summary\n\n## Environment\n- **VPS:** Contabo (4 vCPU / 8GB RAM)\n- **Reverse Proxy:** Nginx Proxy Manager (NPM) running as a Docker container\n- **DNS:** Cloudflare \u2192 A record `vault` \u2192 VPS public IP (Proxied)\n- **Target:** `https://vault.zaverous.com` \u2192 Next.js frontend on port 3000\n\n## Stack (docker ps)\n| Container | Image | Ports |\n|---|---|---|\n| npm-app-1 | jc21/nginx-proxy-manager | 0.0.0.0:80-81, 0.0.0.0:443 |\n| vault-frontend-1 | ghcr.io/zaverous/vault-frontend | 127.0.0.1:3000->3000/tcp |\n| vault-backend-1 | ghcr.io/zaverous/vault-backend | 127.0.0.1:3001->3001/tcp |\n| vault-db-1 | postgres:16-alpine | 5432/tcp |\n\n## Root Cause\nTwo compounding issues:\n1. Frontend bound to `127.0.0.1:3000` \u2014 only reachable from the host loopback, not from other containers\n2. NPM is itself a container \u2014 pointing it to `http://PUBLIC_IP:3000` routes through Cloudflare and loops back\n\n## Fix Attempted\n- Created a shared Docker bridge network named `proxy`\n- Attached both NPM and vault stack to the `proxy` network\n- Removed the `127.0.0.1` host port binding from frontend\n- Updated NPM proxy host destination from `http://PUBLIC_IP:3000` \u2192 `http://frontend-1:3000`\n\n## Current Status\nStill returning 502. All containers are confirmed healthy via logs. The fix is architecturally correct but something in the network wiring didn't apply cleanly.\n\n## Suspected Remaining Issues\n- Container name in NPM destination doesn't match actual Docker container name\n- Vault frontend not actually joined to the `proxy` network after compose changes\n- NPM container not on the `proxy` network\n\n## Next Debug Commands (not yet run)\n```bash\ndocker network inspect proxy\ndocker ps --format \"table {{.Names}}\\t{{.Networks}}\\t{{.Ports}}\"\n```\nThe `docker network inspect proxy` output should list BOTH npm and frontend under `Containers`. If either is missing \u2192 full `docker compose down && docker compose up -d` on that stack.\n\n## Key Principle\nNPM and all proxied containers MUST share a Docker bridge network. NPM's destination should always use the container name, never the public IP:\n```\n# Wrong\nhttp://PUBLIC_IP:3000\n\n# Right\nhttp://your-container-name:3000\n```\n",
+      "summary": "Docker + NPM 502 Bad Gateway \u2014 Issue Summary.",
+      "file_hash": "f52b8165"
+    },
+    {
+      "id": "Claude code prompt.md",
+      "kind": "file",
+      "path": "Claude code prompt.md",
+      "ext": ".md",
+      "size": 3611,
+      "keywords": [],
+      "content": "# Claude Code Prompt \u2014 Test Frontend (NPM Proxy Validator)\n\n## Mission\nBuild a minimal but visually complete **single-page Next.js app** that:\n1. Runs on **port 3000** inside Docker\n2. Serves as a **proxy connectivity test** for Nginx Proxy Manager\n3. Has a fully realized **Early Internet / Internet Nostalgia** aesthetic\n\n---\n\n## Docker Requirements\n- Multi-stage `Dockerfile` (builder + runner)\n- Runs on `node:20-alpine`\n- Exposes port `3000`\n- Must work with this `docker-compose.yml` (already provided separately):\n  - No host port binding\n  - Joins external Docker network named `proxy`\n  - Container name: `test-frontend-app-1`\n\n---\n\n## Page Design \u2014 \"Early Internet Nostalgia\"\n\n### Aesthetic Requirements\n- **Background:** Deep black `#0a0a0a` or dark navy\n- **Font:** Monospace only \u2014 `Courier New`, `VT323` (Google Font), or `Share Tech Mono`\n- **Color palette:** Phosphor green `#00FF41`, amber `#FFB000`, and white `#F0F0F0`\n- **CRT effect:** CSS scanlines overlay across the entire viewport (repeating linear gradient)\n- **Viewport feel:** Like booting into a very old terminal or visiting a GeoCities page\n\n### Must-Have UI Elements\n\n#### 1. Custom Cursor\n- Replace the default cursor with a blinking block cursor (`\u2588`) or crosshair made from ASCII characters\n- Implemented via `cursor: none` on body + a div that follows `mousemove` events\n\n#### 2. ASCII Hero Section\n- Large ASCII art (can be a face, a computer, a skull, a globe \u2014 your choice)\n- Generated in `<pre>` tags, monospace font, glowing green text\n- Add a slow CRT flicker animation on it\n\n#### 3. \"System Boot\" Intro Text\n- Fake terminal boot sequence typed out on load:\n```\nSYSTEM BOOT v1.0 .............. OK\nLOADING MODULES ................ OK\nESTABLISHING CONNECTION ........ OK\nWELCOME TO ZAVEROUS.NET\n```\n- Use `setTimeout` or CSS animation to type it character by character\n\n#### 4. Marquee / Ticker\n- Old-school scrolling `<marquee>`-style text (or CSS animation equivalent):\n```\n\u2605 BEST VIEWED IN 800x600 \u2605 NETSCAPE NAVIGATOR 4.0 \u2605 YOU ARE VISITOR #000420 \u2605\n```\n\n#### 5. \"Under Construction\" Badge\n- Animated GIF-style construction badge (CSS animated, not an actual GIF)\n- Blinking text: `\u26a0 SITE UNDER CONSTRUCTION \u26a0`\n\n#### 6. Navigation Links\n- Styled like old hyperlinks \u2014 blue, underlined, no hover smoothness\n- Links: `[HOME]` `[ABOUT]` `[PROJECTS]` `[GUESTBOOK]` `[WEBRING]`\n\n#### 7. Status Bar\n- Fixed bottom bar mimicking IE/Netscape status bar:\n```\nDone | Internet Zone | \ud83d\udd12\n```\n\n---\n\n## Tech Stack\n- **Framework:** Next.js 15 App Router (or Pages Router \u2014 your choice)\n- **Styling:** Tailwind CSS or plain CSS modules \u2014 whichever is cleaner for this aesthetic\n- **No external UI libraries** \u2014 everything hand-crafted\n\n---\n\n## File Structure Expected\n```\ntest-frontend/\n\u251c\u2500\u2500 Dockerfile\n\u251c\u2500\u2500 docker-compose.yml       \u2190 already provided, just place it here\n\u251c\u2500\u2500 next.config.js\n\u251c\u2500\u2500 package.json\n\u251c\u2500\u2500 app/\n\u2502   \u251c\u2500\u2500 layout.tsx\n\u2502   \u251c\u2500\u2500 page.tsx\n\u2502   \u2514\u2500\u2500 globals.css\n\u2514\u2500\u2500 components/\n    \u251c\u2500\u2500 CRTOverlay.tsx\n    \u251c\u2500\u2500 CustomCursor.tsx\n    \u251c\u2500\u2500 BootSequence.tsx\n    \u2514\u2500\u2500 StatusBar.tsx\n```\n\n---\n\n## Proxy Validation\nWhen the page loads successfully via `https://test.zaverous.com` (or whichever subdomain), it confirms:\n- NPM is correctly routing to the container over the shared Docker `proxy` network\n- Container name resolution is working\n- SSL termination via Let's Encrypt is functioning\n\nThe page should show a visible \"CONNECTION ESTABLISHED\" message prominently so it's immediately clear the proxy is working.\n\n",
+      "summary": "Claude Code Prompt \u2014 Test Frontend (NPM Proxy Validator).",
+      "file_hash": "199b3557"
+    },
+    {
+      "id": "CLAUDE.md",
+      "kind": "file",
+      "path": "CLAUDE.md",
+      "ext": ".md",
+      "size": 4020,
+      "keywords": [],
+      "content": "<!-- dgc-policy-v11 -->\n# Dual-Graph Context Policy\n\nThis project uses a local dual-graph MCP server for efficient context retrieval.\n\n## MANDATORY: Always follow this order\n\n1. **Call `graph_continue` first** \u2014 before any file exploration, grep, or code reading.\n\n2. **If `graph_continue` returns `needs_project=true`**: call `graph_scan` with the\n   current project directory (`pwd`). Do NOT ask the user.\n\n3. **If `graph_continue` returns `skip=true`**: project has fewer than 5 files.\n   Do NOT do broad or recursive exploration. Read only specific files if their names\n   are mentioned, or ask the user what to work on.\n\n4. **Read `recommended_files`** using `graph_read` \u2014 **one call per file**.\n   - `graph_read` accepts a single `file` parameter (string). Call it separately for each\n     recommended file. Do NOT pass an array or batch multiple files into one call.\n   - `recommended_files` may contain `file::symbol` entries (e.g. `src/auth.ts::handleLogin`).\n     Pass them verbatim to `graph_read(file: \"src/auth.ts::handleLogin\")` \u2014 it reads only\n     that symbol's lines, not the full file.\n   - Example: if `recommended_files` is `[\"src/auth.ts::handleLogin\", \"src/db.ts\"]`,\n     call `graph_read(file: \"src/auth.ts::handleLogin\")` and `graph_read(file: \"src/db.ts\")`\n     as two separate calls (they can be parallel).\n\n5. **Check `confidence` and obey the caps strictly:**\n   - `confidence=high` -> Stop. Do NOT grep or explore further.\n   - `confidence=medium` -> If recommended files are insufficient, call `fallback_rg`\n     at most `max_supplementary_greps` time(s) with specific terms, then `graph_read`\n     at most `max_supplementary_files` additional file(s). Then stop.\n   - `confidence=low` -> Call `fallback_rg` at most `max_supplementary_greps` time(s),\n     then `graph_read` at most `max_supplementary_files` file(s). Then stop.\n\n## Token Usage\n\nA `token-counter` MCP is available for tracking live token usage.\n\n- To check how many tokens a large file or text will cost **before** reading it:\n  `count_tokens({text: \"<content>\"})`\n- To log actual usage after a task completes (if the user asks):\n  `log_usage({input_tokens: <est>, output_tokens: <est>, description: \"<task>\"})`\n- To show the user their running session cost:\n  `get_session_stats()`\n\nLive dashboard URL is printed at startup next to \"Token usage\".\n\n## Rules\n\n- Do NOT use `rg`, `grep`, or bash file exploration before calling `graph_continue`.\n- Do NOT do broad/recursive exploration at any confidence level.\n- `max_supplementary_greps` and `max_supplementary_files` are hard caps - never exceed them.\n- Do NOT dump full chat history.\n- Do NOT call `graph_retrieve` more than once per turn.\n- After edits, call `graph_register_edit` with the changed files. Use `file::symbol` notation (e.g. `src/auth.ts::handleLogin`) when the edit targets a specific function, class, or hook.\n\n## Context Store\n\nWhenever you make a decision, identify a task, note a next step, fact, or blocker during a conversation, call `graph_add_memory`.\n\n**To add an entry:**\n```\ngraph_add_memory(type=\"decision|task|next|fact|blocker\", content=\"one sentence max 15 words\", tags=[\"topic\"], files=[\"relevant/file.ts\"])\n```\n\n**Do NOT write context-store.json directly** \u2014 always use `graph_add_memory`. It applies pruning and keeps the store healthy.\n\n**Rules:**\n- Only log things worth remembering across sessions (not every minor detail)\n- `content` must be under 15 words\n- `files` lists the files this decision/task relates to (can be empty)\n- Log immediately when the item arises \u2014 not at session end\n\n## Session End\n\nWhen the user signals they are done (e.g. \"bye\", \"done\", \"wrap up\", \"end session\"), proactively update `CONTEXT.md` in the project root with:\n- **Current Task**: one sentence on what was being worked on\n- **Key Decisions**: bullet list, max 3 items\n- **Next Steps**: bullet list, max 3 items\n\nKeep `CONTEXT.md` under 20 lines total. Do NOT summarize the full conversation \u2014 only what's needed to resume next session.\n",
+      "summary": "<!-- dgc-policy-v11 -->.",
+      "file_hash": "78a3b1a3"
+    }
+  ],
+  "edges": [
+    {
+      "from": "docker-compose.yml",
+      "to": "test-frontend/docker-compose.yml",
+      "rel": "references"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "src/auth.ts",
+      "rel": "references"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "src/db.ts",
+      "rel": "references"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "relevant/file.ts",
+      "rel": "references"
+    }
+  ]
+}

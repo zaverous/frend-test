@@ -1,0 +1,276 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #00ff41;
+  --amber: #ffb000;
+  --white: #f0f0f0;
+  --blue:  #0099ff;
+  --bg:    #0a0a0a;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--green);
+  font-family: var(--font-vt323), "Courier New", monospace;
+  font-size: 20px;
+  cursor: none;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Glow ────────────────────────────────────────── */
+.glow-green {
+  text-shadow:
+    0 0 4px  var(--green),
+    0 0 12px var(--green);
+}
+
+.glow-amber {
+  text-shadow:
+    0 0 4px  var(--amber),
+    0 0 12px var(--amber);
+}
+
+/* ── Keyframes ───────────────────────────────────── */
+@keyframes blink {
+  0%,  49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes flicker {
+  0%,  87%, 89%, 92%, 95%, 100% { opacity: 1;    }
+  88%  { opacity: 0.80; }
+  91%  { opacity: 0.88; }
+  94%  { opacity: 0.75; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes construction-flash {
+  0%,  100% { opacity: 1;   color: var(--amber); }
+  50%        { opacity: 0.1; color: #ff6600;      }
+}
+
+/* ── CRT Vignette ────────────────────────────────── */
+.crt-vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+/* ── Scanlines ───────────────────────────────────── */
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+}
+
+/* ── Custom Cursor ───────────────────────────────── */
+.custom-cursor {
+  position: fixed;
+  width: 12px;
+  height: 20px;
+  background: var(--green);
+  z-index: 9999;
+  pointer-events: none;
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 8px var(--green);
+  transform: translate(-2px, -2px);
+}
+
+/* ── Status Bar ──────────────────────────────────── */
+.status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  background: linear-gradient(to bottom, #d4d0c8, #c0bdb5);
+  color: #000000;
+  font-family: "Tahoma", "Arial", sans-serif;
+  font-size: 11px;
+  line-height: 22px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+  z-index: 9997;
+  user-select: none;
+}
+
+.status-divider {
+  width: 1px;
+  height: 14px;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  flex-shrink: 0;
+}
+
+/* ── Marquee ─────────────────────────────────────── */
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: #000d00;
+  border-bottom: 1px solid #003300;
+  padding: 8px 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 30s linear infinite;
+  color: var(--green);
+  font-size: 17px;
+}
+
+/* ── Navigation ──────────────────────────────────── */
+.nav-bar {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 14px 24px;
+  background: #000500;
+  border-bottom: 2px solid #003300;
+}
+
+.nav-link {
+  color: var(--blue);
+  text-decoration: underline;
+  font-size: 22px;
+  cursor: none;
+  letter-spacing: 0.04em;
+}
+
+.nav-link:hover {
+  background: var(--blue);
+  color: #000000;
+  text-decoration: none;
+}
+
+/* ── ASCII Section ───────────────────────────────── */
+.ascii-section {
+  padding: 32px 24px;
+  overflow-x: auto;
+  text-align: center;
+  background: #000500;
+  border-bottom: 1px solid #002200;
+}
+
+.ascii-art {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1.18;
+  letter-spacing: 0;
+  animation: flicker 7s infinite;
+  text-align: left;
+}
+
+/* ── Content Area ────────────────────────────────── */
+.content-area {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 50px;
+}
+
+/* ── Connection Badge ────────────────────────────── */
+.connection-badge {
+  margin: 36px auto;
+  border: 2px solid var(--green);
+  padding: 22px 32px;
+  text-align: center;
+  box-shadow:
+    0 0 18px var(--green),
+    0 0 40px rgba(0, 255, 65, 0.18),
+    inset 0 0 18px rgba(0, 255, 65, 0.06);
+  animation: flicker 5s infinite;
+}
+
+.connection-badge .headline {
+  font-size: 34px;
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+}
+
+.connection-badge .subline {
+  font-size: 20px;
+  color: var(--white);
+  opacity: 0.85;
+  letter-spacing: 0.06em;
+}
+
+/* ── Retro Divider ───────────────────────────────── */
+.retro-divider {
+  font-size: 15px;
+  color: #004400;
+  text-align: center;
+  padding: 8px 0;
+  overflow: hidden;
+  letter-spacing: 2px;
+}
+
+/* ── Boot Sequence ───────────────────────────────── */
+.boot-sequence {
+  margin: 28px 0;
+  padding: 20px;
+  border: 1px solid #003300;
+  background: #000800;
+  min-height: 130px;
+}
+
+.boot-line {
+  white-space: pre;
+  line-height: 1.75;
+  font-size: 21px;
+}
+
+.boot-cursor {
+  animation: blink 0.7s step-end infinite;
+}
+
+/* ── Under Construction ──────────────────────────── */
+.under-construction-wrapper {
+  text-align: center;
+  padding: 28px 0;
+  font-size: 28px;
+}
+
+.under-construction {
+  animation: construction-flash 0.85s ease-in-out infinite;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+.footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px dashed #003300;
+  text-align: center;
+  font-size: 17px;
+  color: #336633;
+  line-height: 1.9;
+}

@@ -1,0 +1,423 @@
+[
+  {
+    "type": "fact",
+    "content": "Next.js 15 nostalgia frontend built; runs port 3000, joins external proxy network",
+    "tags": [
+      "docker",
+      "nextjs",
+      "proxy",
+      "frontend"
+    ],
+    "files": [
+      "Dockerfile",
+      "docker-compose.yml",
+      "app/page.tsx"
+    ],
+    "date": "2026-03-28"
+  },
+  {
+    "id": "mem:1774679801280",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "components/BootSequence.tsx"
+    ],
+    "file_path": "components/BootSequence.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.280750+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.280763+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801278",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "components/CRTOverlay.tsx"
+    ],
+    "file_path": "components/CRTOverlay.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.278408+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.278429+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801255",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "app/page.tsx"
+    ],
+    "file_path": "app/page.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.255378+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.255389+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801253",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "tsconfig.json"
+    ],
+    "file_path": "tsconfig.json",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.253366+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.253376+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801252",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "next.config.js"
+    ],
+    "file_path": "next.config.js",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.251978+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.251990+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801245",
+    "kind": "decision",
+    "content": "Built full Next.js 15 early-internet nostalgia frontend with CRT effects, typewriter boot sequence, custom cursor, and Docker standalone build",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "Dockerfile",
+      "next.config.js",
+      "package.json",
+      "tsconfig.json",
+      "app/layout.tsx",
+      "app/page.tsx",
+      "app/globals.css",
+      "components/CRTOverlay.tsx",
+      "components/CustomCursor.tsx",
+      "components/BootSequence.tsx",
+      "components/StatusBar.tsx"
+    ],
+    "file_path": "Dockerfile",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.245711+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.245724+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "window_sec": 120,
+      "recent_action_kinds": [],
+      "recent_queries": []
+    }
+  },
+  {
+    "id": "mem:1774679801251",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "Dockerfile"
+    ],
+    "file_path": "Dockerfile",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.251044+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.251060+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801252",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "package.json"
+    ],
+    "file_path": "package.json",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.252668+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.252678+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801254",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "app/layout.tsx"
+    ],
+    "file_path": "app/layout.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.254510+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.254525+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801256",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "app/globals.css"
+    ],
+    "file_path": "app/globals.css",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.256350+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.256362+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801279",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "components/CustomCursor.tsx"
+    ],
+    "file_path": "components/CustomCursor.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.279635+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.279651+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1774679801282",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "built",
+      "full",
+      "next",
+      "early",
+      "internet",
+      "nostalgia",
+      "frontend",
+      "crt"
+    ],
+    "files": [
+      "components/StatusBar.tsx"
+    ],
+    "file_path": "components/StatusBar.tsx",
+    "symbol_id": "",
+    "symbol_hash": "",
+    "created_at": "2026-03-28T06:36:41.282018+00:00",
+    "created_epoch": 1774679801,
+    "updated_at": "2026-03-28T06:36:41.282031+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{"timestamp": "2026-03-28T06:37:00.295609+00:00", "model": "claude-sonnet-4-6", "input_tokens": 50, "output_tokens": 38744, "cache_creation_input_tokens": 232834, "cache_read_input_tokens": 1537848, "total_tokens": 1809476, "cost_usd": 1.915792, "project": "/home/zaverous/project/frend-test", "description": "auto", "mode": "session"}

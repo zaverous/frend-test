@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "id": "query:build next frontend docker nostalgia aesthetic",
+      "type": "query",
+      "meta": {
+        "text": "build Next.js frontend Docker nostalgia aesthetic"
+      }
+    },
+    {
+      "id": "docker-compose.yml",
+      "type": "file"
+    },
+    {
+      "id": "query:(empty)",
+      "type": "query",
+      "meta": {
+        "text": ""
+      }
+    },
+    {
+      "id": "action:edit:1774679801",
+      "type": "action",
+      "meta": {
+        "summary": "Built full Next.js 15 early-internet nostalgia frontend with CRT effects, typewriter boot sequence, custom cursor, and Docker standalone build"
+      }
+    },
+    {
+      "id": "Dockerfile",
+      "type": "file"
+    },
+    {
+      "id": "next.config.js",
+      "type": "file"
+    },
+    {
+      "id": "package.json",
+      "type": "file"
+    },
+    {
+      "id": "tsconfig.json",
+      "type": "file"
+    },
+    {
+      "id": "app/layout.tsx",
+      "type": "file"
+    },
+    {
+      "id": "app/page.tsx",
+      "type": "file"
+    },
+    {
+      "id": "app/globals.css",
+      "type": "file"
+    },
+    {
+      "id": "components/CRTOverlay.tsx",
+      "type": "file"
+    },
+    {
+      "id": "components/CustomCursor.tsx",
+      "type": "file"
+    },
+    {
+      "id": "components/BootSequence.tsx",
+      "type": "file"
+    },
+    {
+      "id": "components/StatusBar.tsx",
+      "type": "file"
+    }
+  ],
+  "edges": [
+    {
+      "from": "query:build next frontend docker nostalgia aesthetic",
+      "to": "docker-compose.yml",
+      "rel": "retrieved",
+      "ts": 1774671128
+    },
+    {
+      "from": "query:(empty)",
+      "to": "docker-compose.yml",
+      "rel": "read",
+      "ts": 1774671133,
+      "meta": {
+        "mode": "full"
+      }
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "Dockerfile",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "next.config.js",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "package.json",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "tsconfig.json",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "app/layout.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "app/page.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "app/globals.css",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "components/CRTOverlay.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "components/CustomCursor.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "components/BootSequence.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    },
+    {
+      "from": "action:edit:1774679801",
+      "to": "components/StatusBar.tsx",
+      "rel": "edited",
+      "ts": 1774679801
+    }
+  ],
+  "files": {
+    "docker-compose.yml": {
+      "query_terms": [],
+      "cached_content": "# test-frontend/docker-compose.yml\n# Purpose: Minimal test to validate NPM \u2192 container routing works correctly.\n# This stack joins the shared `proxy` network so NPM can reach it by container name.\n# In NPM, set destination to: http://test-frontend-app-1:3000\n\nservices:\n  app:\n    build:\n      contex",
+      "cached_chars": 592,
+      "cached_tokens_est": 148,
+      "last_action": "read",
+      "last_ts": 1774671133
+    },
+    "Dockerfile": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244144+00:00",
+      "edited_count": 1
+    },
+    "next.config.js": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244173+00:00",
+      "edited_count": 1
+    },
+    "package.json": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244221+00:00",
+      "edited_count": 1
+    },
+    "tsconfig.json": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244234+00:00",
+      "edited_count": 1
+    },
+    "app/layout.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244243+00:00",
+      "edited_count": 1
+    },
+    "app/page.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244287+00:00",
+      "edited_count": 1
+    },
+    "app/globals.css": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244303+00:00",
+      "edited_count": 1
+    },
+    "components/CRTOverlay.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244313+00:00",
+      "edited_count": 1
+    },
+    "components/CustomCursor.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244322+00:00",
+      "edited_count": 1
+    },
+    "components/BootSequence.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244331+00:00",
+      "edited_count": 1
+    },
+    "components/StatusBar.tsx": {
+      "last_action": "edited",
+      "last_ts": "2026-03-28T06:36:41.244341+00:00",
+      "edited_count": 1
+    }
+  },
+  "actions": [
+    {
+      "ts": 1774671128,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "build Next.js frontend Docker nostalgia aesthetic"
+      }
+    },
+    {
+      "ts": 1774679801,
+      "kind": "register_edit",
+      "payload": {
+        "kind": "register_edit"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "ts": 1774679801,
+      "summary": "Built full Next.js 15 early-internet nostalgia frontend with CRT effects, typewriter boot sequence, custom cursor, and Docker standalone build",
+      "files": [
+        "Dockerfile",
+        "next.config.js",
+        "package.json",
+        "tsconfig.json",
+        "app/layout.tsx",
+        "app/page.tsx",
+        "app/globals.css",
+        "components/CRTOverlay.tsx",
+        "components/CustomCursor.tsx",
+        "components/BootSequence.tsx",
+        "components/StatusBar.tsx"
+      ],
+      "scope": "global"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# test-frontend/docker-compose.yml
+# Purpose: Minimal test to validate NPM → container routing works correctly.
+# This stack joins the shared `proxy` network so NPM can reach it by container name.
+# In NPM, set destination to: http://test-frontend-app-1:3000
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-frontend-app-1
+    restart: unless-stopped
+    networks:
+      - proxy
+    # NO host port binding — NPM reaches it via the proxy network
+
+networks:
+  proxy:
+    external: true  # Must already exist: run `docker network create proxy`
